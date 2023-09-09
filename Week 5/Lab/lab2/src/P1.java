@@ -61,6 +61,7 @@ public class P1 {
     /* add method code here */
 
 
+    // randomly generate integers from [0, 9] and check if the answer that is input by user matches the computed truth
     public static void mulTest() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
@@ -78,6 +79,7 @@ public class P1 {
         System.out.println(count + " out of 5 are correct");
     }
 
+    // division by subtraction and returns the quotient of dividing m by n
     public static int divide(int m, int n) {
 
         int count = 0;
@@ -88,6 +90,7 @@ public class P1 {
         return count;
     }
 
+    // division by modulus and returns the remainder of dividing m by n
     public static int modulus(int m, int n) {
 
         while (m >= n) {
@@ -96,6 +99,7 @@ public class P1 {
         return m;
     }
 
+    // count how many of such digits
     public static int countDigits(int n) {
         int count = 0;
 
@@ -113,6 +117,7 @@ public class P1 {
         }
     }
 
+    // get the position of the specified digit by counting from the rightmost starting at 1
     public static int position(int n, int digit) {
 
         int pos = 1;
@@ -125,6 +130,7 @@ public class P1 {
         return -1;
     }
 
+    // count how many odd digits are there in input
     public static long extractOddDigits(long n) {
 
         long odd = 0;
