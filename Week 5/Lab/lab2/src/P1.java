@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class P1 {
     public static void main(String[] args) {
-        int choice;
+        int choice, m, n;
         Scanner sc = new Scanner(System.in);
         do {
             System.out.println("Perform the following methods:");
@@ -16,43 +16,47 @@ public class P1 {
             System.out.println("7: quit");
             choice = sc.nextInt();
             switch (choice) {
-                case 1: /* add mulTest() call */
+                case 1:
                     mulTest();
                     break;
-                case 2: /* add divide() call */
-                    System.out.println("Enter m: ");
-                    int m2 = sc.nextInt();
-                    System.out.println("Enter n: ");
-                    int n2 = sc.nextInt();
-                    int result2 = divide(m2, n2);
-                    System.out.println(result2);
+                case 2:
+                    System.out.print("Enter m: ");
+                    m = sc.nextInt();
+                    System.out.print("Enter n: ");
+                    n = sc.nextInt();
+                    System.out.printf("%d/%d = %d\n", m, n, divide(m, n));
                     break;
-                case 3: /* add modulus() call */
-                    System.out.println("Enter m: ");
-                    int m3 = sc.nextInt();
-                    System.out.println("Enter n: ");
-                    int n3 = sc.nextInt();
-                    int result3 = modulus(m3, n3);
-                    System.out.println(result3);
+                case 3:
+                    System.out.print("Enter m: ");
+                    m = sc.nextInt();
+                    System.out.print("Enter n: ");
+                    n = sc.nextInt();
+                    System.out.printf("%d%%%d = %d\n", m, n, modulus(m, n));
                     break;
-                case 4: /* add countDigits() call */
+                case 4:
                     System.out.print("Enter digits: ");
-                    int i4 = sc.nextInt();
-                    countDigits(i4);
+                    m = sc.nextInt();
+                    int output = countDigits(m);
+                    if (output == 0)
+                        System.out.printf("n: %d - Error input!!\n", m);
+                    else
+                        System.out.printf("n: %d - count = %d\n", m, output);
                     break;
-                case 5: /* add position() call */
+                case 5:
                     System.out.print("Enter number: ");
-                    int number = sc.nextInt();
+                    m = sc.nextInt();
                     System.out.print("Enter digit: ");
-                    int digit = sc.nextInt();
-                    int pos = position(number, digit);
-                    System.out.println(pos);
+                    n = sc.nextInt();
+                    int pos = position(m, n);
+                    System.out.println("position = " + pos);
                     break;
-                case 6: /* add extractOddDigits() call */
+                case 6:
                     System.out.print("Enter digit: ");
                     long oddInput = sc.nextLong();
-                    long oddCount = extractOddDigits(oddInput);
-                    System.out.println(oddCount);
+                    if (oddInput > 0)
+                        System.out.println("oddDigits = " + extractOddDigits(oddInput));
+                    else
+                        System.out.println("oddDigits = Error input!!");
                     break;
                 case 7: System.out.println("Program terminating ….");
             }
@@ -90,7 +94,7 @@ public class P1 {
         return count;
     }
 
-    // division by modulus and returns the remainder of dividing m by n
+    // division by subtraction and returns the remainder of dividing m by n
     public static int modulus(int m, int n) {
 
         while (m >= n) {
@@ -104,16 +108,15 @@ public class P1 {
         int count = 0;
 
         if (n < 0) {
-            System.out.print("Error input!!");
-            return 0;
+            return count;
         }
         else {
             while (n != 0) {
+                // keep diving by 10 to remove last digit
                 n /= 10;
                 ++count;
             }
-            System.out.println("Count = " + count);
-            return 0;
+            return count;
         }
     }
 
@@ -123,9 +126,12 @@ public class P1 {
         int pos = 1;
 
         while (n > 0) {
+            // check if the last digit is equal to the specified digit
             if (n % 10 == digit)
                 return pos;
+            // keep diving by 10 to remove last digit
             n /= 10;
+            ++pos;
         }
         return -1;
     }
@@ -138,11 +144,15 @@ public class P1 {
 
 
         while (n > 0) {
+
+            // check if the last digit of n is odd
             if ((n % 10) % 2 != 0)
             {
+                // if it's odd, add it to the odd result at the appropriate position
                 odd += (count * (n % 10));
                 count *= 10;
             }
+            // remove the last digit of n by dividing it by 10
             n /= 10;
         }
 
