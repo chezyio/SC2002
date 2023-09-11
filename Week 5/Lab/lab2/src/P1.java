@@ -60,7 +60,7 @@ public class P1 {
                     break;
                 case 7: System.out.println("Program terminating ….");
             }
-        } while (choice < 7);
+        } while (choice < 7 && choice >0);
     }
     /* add method code here */
 
@@ -72,8 +72,8 @@ public class P1 {
         int count = 0;
 
         for (int i = 0; i < 5; i++) {
-            int v1 = random.nextInt(10);
-            int v2 = random.nextInt(10);
+            int v1 = random.nextInt(9) + 1;
+            int v2 = random.nextInt(9) + 1;
             System.out.print("How much is " + v1 + " times " + v2 + "? ");
             int input = scanner.nextInt();
             if (input == v1 * v2) {
@@ -97,10 +97,17 @@ public class P1 {
     // division by subtraction and returns the remainder of dividing m by n
     public static int modulus(int m, int n) {
 
-        while (m >= n) {
-            m %= n;
+        int remainder = 0;
+        while(m > 0)
+        {
+            remainder = m;
+            m -= n;
         }
-        return m;
+
+        if (m != 0)
+            return remainder;
+        else
+            return 0;
     }
 
     // count how many of such digits
@@ -148,7 +155,7 @@ public class P1 {
             // check if the last digit of n is odd
             if ((n % 10) % 2 != 0)
             {
-                // if it's odd, add it to the odd result at the appropriate position
+                // if it's odd, the odd digit is added to the result while preserving its position
                 odd += (count * (n % 10));
                 count *= 10;
             }
