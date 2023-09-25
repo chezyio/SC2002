@@ -16,6 +16,7 @@ public class PlaneApp {
                 "(5) Assign a customer to a seat\n" +
                 "(6) Remove a seat assignment\n" +
                 "(7) Quit");
+        
         do {
             System.out.print("Enter choice: ");
             choice = scanner.nextInt();
