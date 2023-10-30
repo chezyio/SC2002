@@ -13,6 +13,8 @@ int main() {
 
     Mammal *mammals[3];
 
+
+
     while (choice != 5) {
         cout << "Select the animal to send to Zoo :" << endl;
         cout << "(1) Dog (2) Cat (3) Lion (4) Move all animals (5) Quit" << endl;
